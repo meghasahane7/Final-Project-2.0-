@@ -48,19 +48,19 @@ def view_members():
     members = c.fetchall()
     st.write("### Members")
     st.table(members)
+  
+#def plot_genre_distribution():
+ #   c.execute("SELECT genre, COUNT(*) as count FROM books GROUP BY genre")
+  #  genre_data = c.fetchall()
+   # df = pd.DataFrame(genre_data, columns=['Genre', 'Count'])
+    # df.set_index('Genre', inplace=True)
 
-def plot_genre_distribution():
-    c.execute("SELECT genre, COUNT(*) as count FROM books GROUP BY genre")
-    genre_data = c.fetchall()
-    df = pd.DataFrame(genre_data, columns=['Genre', 'Count'])
-    df.set_index('Genre', inplace=True)
-
-    plt.figure(figsize=(10, 6))
-    plt.bar(df.index, df['Count'], color='skyblue')
-    plt.xlabel('Genre')
-    plt.ylabel('Count')
-    plt.title('Book Genre Distribution')
-    st.pyplot()
+    # plt.figure(figsize=(10, 6))
+    # plt.bar(df.index, df['Count'], color='skyblue')
+    #plt.xlabel('Genre')
+    # plt.ylabel('Count')
+    # plt.title('Book Genre Distribution')
+    # st.pyplot()
     #st.set_option('deprecation.showPyplotGlobalUse', False)
 
 def main():
