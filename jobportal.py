@@ -36,7 +36,7 @@ def show_jobs(jobs):
 def main():
     st.title("Job Portal")
     
-    location = st.sidebar.selectbox("Select Location", ["All", "New York", "San Francisco", "Seattle"])
+    location = st.sidebar.selectbox("Select Location", ["All", "Karachi", "Lahore", "Dubai"])
     
     filtered_jobs = get_jobs(location)
     
