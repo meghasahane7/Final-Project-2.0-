@@ -20,13 +20,7 @@ def main():
     st.subheader("Current ICC Rankings")
     st.write(df)
 
-    # Create a bar chart to visualize the rankings
-    fig, ax = plt.subplots()
-    ax.barh(df["Team"], df["Ranking"], color='skyblue')
-    ax.set_xlabel("Ranking")
-    ax.set_ylabel("Team")
-    ax.set_title("ICC Rankings")
-    st.pyplot(fig)
+    
 
 if __name__ == "__main__":
     main()
