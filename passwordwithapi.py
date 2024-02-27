@@ -15,9 +15,10 @@ def generate_password(length, use_uppercase, use_numbers, use_special):
     return password
 
 def main():
-        st.title("Password Generator")
+    st.title("Password Generator")
 # Company logo
     st.sidebar.image("logo.png", use_column_width=True)
+
 
     length = st.slider("Select password length", 6, 30, 12)
 
