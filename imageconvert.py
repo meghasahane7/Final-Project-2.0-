@@ -19,7 +19,7 @@ class SessionState:
 
 # Streamlit UI
 def main():
-    st.sidebar.title("Navigation")
+    st.sidebar.title("Main Menu")
     page = st.sidebar.radio("Go to", ["Home","About Us","Contact","Converter"])
 
     session_state = SessionState(page=page)
