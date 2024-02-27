@@ -1,46 +1,32 @@
-class Team:
-    def __init__(self, name):
-        self.name = name
-        self.points = 0
+import streamlit as st
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 
-teams = [
-    Team("India"),
-    Team("Australia"),
-    Team("England"),
-    Team("New Zealand"),
-    Team("South Africa")
-]
+# Function to generate random ICC rankings
+def generate_rankings():
+    teams = ["India", "Australia", "England", "New Zealand", "South Africa", "Pakistan", "West Indies", "Sri Lanka", "Bangladesh"]
+    rankings = np.random.randint(1, 10, size=len(teams))
+    ranking_data = {"Team": teams, "Ranking": rankings}
+    return pd.DataFrame(ranking_data)
 
-# Simulating some match results
-results = [
-    ("India", "Australia", "win"),  # India wins against Australia
-    ("England", "New Zealand", "win"),  # England wins against New Zealand
-    ("South Africa", "India", "win"),  # South Africa wins against India
-    ("Australia", "England", "loss"),  # Australia loses against England
-    ("New Zealand", "South Africa", "loss")  # New Zealand loses against South Africa
-]
+def main():
+    st.title("ICC Ranking System")
+# Company logo
+    st.sidebar.image("icc.jpg", use_column_width=True)
+    # Generate random ICC rankings
+    df = generate_rankings()
 
-# Updating team points based on match results
-for team1, team2, result in results:
-    if result == "win":
-        for team in teams:
-            if team.name == team1:
-                team.points += 2
-            elif team.name == team2:
-                team.points += 1
-    elif result == "loss":
-        for team in teams:
-            if team.name == team1:
-                team.points += 1
-            elif team.name == team2:
-                team.points += 2
+    st.subheader("Current ICC Rankings")
+    st.write(df)
 
-# Sorting teams based on points
-teams.sort(key=lambda x: x.points, reverse=True)
+    # Create a bar chart to visualize the rankings
+    fig, ax = plt.subplots()
+    ax.barh(df["Team"], df["Ranking"], color='skyblue')
+    ax.set_xlabel("Ranking")
+    ax.set_ylabel("Team")
+    ax.set_title("ICC Rankings")
+    st.pyplot(fig)
 
-# Displaying the ranking table
-print("ICC Ranking Table:")
-print("{:<10} {:<10}".format("Team", "Points"))
-print("-" * 20)
-for i, team in enumerate(teams, start=1):
-    print("{:<10} {:<10}".format(f"{i}. {team.name}", team.points))
+if __name__ == "__main__":
+    main()
